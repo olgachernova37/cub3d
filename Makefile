@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
 # Імена
-NAME = so_long
+NAME = cub3d
 
 # Шляхи
 SRCDIR = src
