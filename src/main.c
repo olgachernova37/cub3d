@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olcherno <olcherno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../cub3d.h"
 
-# include "libs/libft/libft.h"
-# include "libs/minilibx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <stdlib.h>
-
-# define WIN_W		1280
-# define WIN_H		720
-# define WIN_TITLE	"cub3D"
-
-# define KEY_ESC	65307
-
-typedef struct s_app
+int	main(void)
 {
-	void	*mlx;
-	void	*win;
-	int		width;
-	int		height;
-}	t_app;
+	t_app	app;
 
-/* window.c */
-void	init_app(t_app *app);
-int		close_app(t_app *app);
-int		key_handler(int keycode, t_app *app);
-
-#endif
+	init_app(&app);
+	/* Event 17 = ClientMessage (window manager "close" / X button) */
+	mlx_hook(app.win, 17, 0, close_app, &app);
+	/* Event 2 = KeyPress */
+	mlx_hook(app.win, 2, 1L << 0, key_handler, &app);
+	mlx_loop(app.mlx);
+	return (0);
+}
