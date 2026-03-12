@@ -31,11 +31,21 @@ typedef struct s_app
 	void	*win;
 	int		width;
 	int		height;
+
+	void    *img;       // the image object
+	char    *addr;      // raw pixel memory
+	int     bpp;        // bits per pixel for mlx_get_data_addr
+	int     line_len;   // bytes per row for mlx_get_data_addr
+	int     endian;
+
 }	t_app;
 
 /* window.c */
 void	init_app(t_app *app);
 int		close_app(t_app *app);
 int		key_handler(int keycode, t_app *app);
+
+/* window1.c */
+void    initialize_image(t_app *app);
 
 #endif

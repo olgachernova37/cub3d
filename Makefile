@@ -27,8 +27,8 @@ MLXDIR = libs/minilibx
 MLX_FLAGS = -L$(MLXDIR) -lmlx -lX11 -lXext -lm
 LIBS = -L$(LIBFTDIR) -lft
 
-# Список файлів (phase 1: window only)
-SRC = main.c window.c
+# Список файлів
+SRC = main.c window.c window1.c
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 

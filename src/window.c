@@ -60,4 +60,5 @@ void	init_app(t_app *app)
 		ft_putstr_fd("Error: mlx_new_window failed\n", 2);
 		exit(1);
 	}
+	initialize_image(app);
 }
