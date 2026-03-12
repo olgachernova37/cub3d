@@ -21,6 +21,7 @@ int	main(void)
 	mlx_hook(app.win, 17, 0, close_app, &app);
 	/* Event 2 = KeyPress */
 	mlx_hook(app.win, 2, 1L << 0, key_handler, &app);
+	mlx_loop_hook(app.mlx, render, &app);
 	mlx_loop(app.mlx);
 	return (0);
 }

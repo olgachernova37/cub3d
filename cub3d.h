@@ -46,6 +46,8 @@ int		close_app(t_app *app);
 int		key_handler(int keycode, t_app *app);
 
 /* window1.c */
-void    initialize_image(t_app *app);
+void	initialize_image(t_app *app);
+void	put_pixel(t_app *app, int x, int y, int color);
+int		render(t_app *app);
 
 #endif

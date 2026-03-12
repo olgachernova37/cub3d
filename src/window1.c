@@ -49,10 +49,10 @@ int    render(t_app *app)
     return (0);
 }
 
-void    put_pixel(t_app *app, int x, int y, int color)
+void	put_pixel(t_app *app, int x, int y, int color)
 {
-    int offset;
+	int	offset;
 
-    offset = ???;
-    *(int *)(app->addr + offset) = color;
+	offset = y * app->line_len + x * (app->bpp / 8);
+	*(int *)(app->addr + offset) = color;
 }
