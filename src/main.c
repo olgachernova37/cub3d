@@ -37,6 +37,13 @@ int	main(int ac, char **av)
 	if (check_args(ac, av))
 		return (1);
 	ft_bzero(&app, sizeof(app));
+	app.width = WIN_W;
+	app.height = WIN_H;
+	if (parse_cub(av[1], &app))
+	{
+		free_app(&app);
+		return (1);
+	}
 	init_app(&app);
 	/* Event 17 = ClientMessage (window manager "close" / X button) */
 	mlx_hook(app.win, 17, 0, close_app, &app);

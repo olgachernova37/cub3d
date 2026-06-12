@@ -25,12 +25,34 @@
 
 # define KEY_ESC	65307
 
+typedef struct s_map
+{
+	char	**grid;
+	int		width;
+	int		height;
+	int		player_x;
+	int		player_y;
+	char	player_dir;
+}	t_map;
+
+typedef struct s_config
+{
+	char	*no_texture;
+	char	*so_texture;
+	char	*we_texture;
+	char	*ea_texture;
+	int		floor_color;
+	int		ceiling_color;
+}	t_config;
+
 typedef struct s_app
 {
 	void	*mlx;
 	void	*win;
 	int		width;
 	int		height;
+	t_map	map;
+	t_config	config;
 
 	void    *img;       // the image object
 	char    *addr;      // raw pixel memory
@@ -39,6 +61,10 @@ typedef struct s_app
 	int     endian;
 
 }	t_app;
+
+int		parse_cub(const char *path, t_app *app);
+void	free_app(t_app *app);
+void	free_strtab(char **tab);
 
 /* window.c */
 void	init_app(t_app *app);
